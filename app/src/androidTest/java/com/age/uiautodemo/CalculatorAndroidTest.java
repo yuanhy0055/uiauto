@@ -22,14 +22,18 @@ import static junit.framework.TestCase.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class CalculatorAndroidTest {
 
-    Context mContext;
-    UiDevice mDevice;
+    private Context mContext;
+    private UiDevice mDevice;
 
     @Before
     public void setUp() throws Exception {
         mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
         mContext = InstrumentationRegistry.getContext();
 
+        // Start from the home screen
+        mDevice.pressBack();
+        mDevice.pressBack();
+        mDevice.pressHome();
         //UiObject allAppsButton = new UiObject(new UiSelector().description("Apps"));
         //allAppsButton.clickAndWaitForNewWindow();
         //UiObject cal = new UiObject(new UiSelector().text("Calculator"));
@@ -39,11 +43,12 @@ public class CalculatorAndroidTest {
     @Test
     public void testSetting() throws UiObjectNotFoundException, InterruptedException, IOException {
         UiAutomatorTestCase u = new UiAutomatorTestCase ();
-//         Home键
-        mDevice.pressHome();
-        // 找到设置并点击
-        mDevice.findObject(new UiSelector().text("Calculator")).click();
-        u.sleep(1000);
+
+        // 找到应用并点击
+        //mDevice.findObject(new UiSelector().text("Calculator")).click();
+        UiObject u0 = new UiObject(new UiSelector().className("android.widget.ImageButton"));
+        u0.click();
+        u.sleep(3000);
 
         new UiObject(new UiSelector().text("5")).click();
         u.sleep(1000);
