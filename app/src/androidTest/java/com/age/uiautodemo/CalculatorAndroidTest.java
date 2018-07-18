@@ -44,10 +44,13 @@ public class CalculatorAndroidTest {
     public void testSetting() throws UiObjectNotFoundException, InterruptedException, IOException {
         UiAutomatorTestCase u = new UiAutomatorTestCase ();
 
+        mDevice.findObject(new UiSelector().description("应用")).click();
+        u.sleep(3000);
+
         // 找到应用并点击
-        //mDevice.findObject(new UiSelector().text("Calculator")).click();
-        UiObject u0 = new UiObject(new UiSelector().className("android.widget.ImageButton"));
-        u0.click();
+        mDevice.findObject(new UiSelector().text("计算器")).click();
+        //UiObject u0 = new UiObject(new UiSelector().className("android.widget.ImageButton"));
+        //u0.click();
         u.sleep(3000);
 
         new UiObject(new UiSelector().text("5")).click();
