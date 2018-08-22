@@ -61,7 +61,8 @@ public class CalculatorAndroidTest {
         u.sleep(1000);
         //mDevice.pressHome();
 
-        while(true) {
+        int cnt = 0;
+        while(cnt++ < 10) {
             new UiObject(new UiSelector().text("9")).click();
             new UiObject(new UiSelector().text("6")).click();
             new UiObject(new UiSelector().text("+")).click();
